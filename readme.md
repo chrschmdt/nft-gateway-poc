@@ -6,7 +6,7 @@ The web3.js library is used to get the user's ethereum address, and they are ask
 
 A request with the signed message is sent to the API which checks the balance of the wallet before issuing an access token to the client.
 
-##Building Locally
+## Building Locally
 
 ### Setting up
 
