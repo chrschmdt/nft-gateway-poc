@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 const Web3 = require('web3')
 const axios = require('axios')
 
-// our secret data
+// secret data
 const protectedData = [
     {id:1, name: 'Alice', occupation:'Blockchain developer 👩🏻‍💻'},
     {id:2, name: 'Brian', occupation:'Digital artist 👨🏻‍🎨'},
@@ -43,11 +43,6 @@ app.get('/api/data', parseToken, (req, res) => {
         if (e) res.sendStatus(403);
         else res.json(protectedData);
     });
-});
-
-app.post('/api/verify2', (req, res) => {
-    console.log(req.body);
-    res.sendStatus(200);
 });
 
 app.post('/api/verify', (req, res) => {
