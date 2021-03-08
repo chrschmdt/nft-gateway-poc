@@ -1,9 +1,18 @@
-import React, {Component} from 'react';
+import React, { useContext } from 'react';
+import DataContext from '../../context/data/dataContext';
 import styles from './header.module.css';
 import logo from '../../assets/721-gate.png'
 
-class Header extends Component {
-    render() {
+const Header = () => {
+
+    const dataContext = useContext(DataContext);
+
+    const { web3, connectWallet } = dataContext;
+
+    const handleClick = () => {
+        connectWallet();
+    }
+  
         return (
             <div className={styles.header}>
                 <div className="d-flex flex-row justify-content-center my-auto">
@@ -12,18 +21,18 @@ class Header extends Component {
                 </div>
                 <div className='d-flex flex-row justify-content-center my-auto'>
                     <span
-                        className={`${styles.link} ${this.props.web3 === undefined 
+                        className={`${styles.link} ${web3 === undefined 
                             ? styles.yellowCircle 
                             : styles.greenCircle}`
                         }
-                        onClick={()=>{this.props.connectFn()}}
+                        onClick={handleClick}
                     >
-                        Connect{this.props.web3 === undefined ? '' : 'ed'}
+                        Connect{web3 === undefined ? '' : 'ed'}
                     </span>
                 </div>
             </div>
         );
-    }
+    
 }
 
 export default Header;
